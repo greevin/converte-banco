@@ -2,7 +2,7 @@
 
 // Remove acentuação no post_name no Wordpress
 $remove_graphic_signs = '
-UPDATE wp_db_posts
+UPDATE wp_db_nied.wp_db_posts
 SET
 post_name = TRIM(LCASE(post_name)),
 post_name = REPLACE(post_name ,"á","a"),
@@ -31,19 +31,11 @@ execute_query($remove_graphic_signs, $conn, $debug);
 
 // Corrige tags erradas
 $fix_wrongs_tags = '
-UPDATE wp_db_terms
-SET slug = REPLACE(slug, "_", "ca")
-WHERE term_id IN (12,16);
-
-UPDATE wp_db_terms
-SET slug = REPLACE(slug, "_", "i")
-WHERE term_id = 6;
-
-UPDATE wp_db_terms
-SET slug = REPLACE(slug, "_", "-")
-WHERE term_id = 13;
+INSERT INTO wp_db_nied.wp_db_terms (term_id, slug) VALUES (6, "noticia"), (12, "publicacao"), (16, "coordenacao"), (13, "to-do")
+ON DUPLICATE KEY UPDATE term_id=VALUES(term_id), slug=VALUES(slug);
 ';
-echo '<b>Corrige tags erradas</b>'. '<br>';
+
+echo '<br>' . '<b>Corrige tags erradas</b>'. '<br>';
 execute_query($fix_wrongs_tags, $conn, $debug);
 
 ?>
