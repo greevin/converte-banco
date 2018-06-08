@@ -32,9 +32,7 @@ echo "<b>&gt;&gt;carrega-cargos.php</b>" . '<br>';
 require_once "carrega-cargos.php";
 echo '<br>';
 
-echo "<b>&gt;&gt;carrega-linhas-pesquisa.php</b>" . '<br>';
-require_once "carrega-linhas-pesquisa.php";
-echo '<br>';
+
 
 echo '<br>'. "<b>&gt;&gt;prepara-banco.php</b>" . '<br>';
 require_once "prepara-banco.php";

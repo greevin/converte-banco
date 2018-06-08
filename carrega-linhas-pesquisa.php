@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
 		$map_id_roles_array[$row["nid"]][] = $row["linha_pesquisa"];
 	}
 }
-echo "<b>Insere as linhas de pesquisa na equipe</b>" . '<br>';
+
 foreach ($map_id_roles_array as $id => $roles_array) {
 	$array_content = 'a:' . count($roles_array) . ':{';
 	foreach ($roles_array as $key => $role) {

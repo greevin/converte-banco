@@ -39,3 +39,6 @@ WHERE type="equipe" AND field_data_field_data_fim.field_data_fim_value IS NOT NU
 ';
 echo '<br>' . '<b>Adiciona a data de fim para uma pessoa</b>'. '<br>';
 execute_query($migrate_end_date_info_team, $conn, $debug);
+
+echo '<br>' . '<b>Adiciona a linha de pesquisa da pessoa</b>'. '<br>';
+require_once "carrega-linhas-pesquisa.php";
