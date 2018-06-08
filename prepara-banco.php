@@ -10,13 +10,15 @@ TRUNCATE TABLE wp_db_nied.wp_db_term_relationships;
 TRUNCATE TABLE wp_db_nied.wp_db_term_taxonomy;
 TRUNCATE TABLE wp_db_nied.wp_db_terms;
 ';
+echo '<b>Limpando as tabelas do Wordpress</b>'. '<br>';
 execute_query($clean_tables_query, $conn, $debug);
 
 // Cria o ’Sem Categoria’ se ele foi apagado
 $create_no_category = '
 INSERT INTO wp_db_nied.wp_db_terms (name, slug, term_group)
-VALUES (\'Sem categoria\',\'sem-categoria\', 0);
+VALUES ("Sem categoria","sem-categoria", 0);
 ';
+echo '<br>' . '<b>Recria o "Sem Categoria" se ele foi apagado</b>'. '<br>';
 execute_query($create_no_category, $conn, $debug);
 
 // Converte para categorias
@@ -25,14 +27,16 @@ REPLACE INTO wp_db_casn.wp_terms (name, slug)
 SELECT n.name, n.type
 FROM drupal.node_type n;
 ';
+echo '<br>' . '<b>Convertendo as categorias</b>'. '<br>';
 execute_query($create_new_categories, $conn, $debug);
 
 // Adiciona os termos na taxonomia
 $add_new_taxonomies = '
 REPLACE INTO wp_db_casn.wp_term_taxonomy (term_taxonomy_id, term_id, taxonomy, description, parent)
-SELECT t.term_id, t.term_id \'term_id\', \'category\', \'\', 0
+SELECT t.term_id, t.term_id "term_id", "category", "", 0
 FROM wp_db_casn.wp_terms t;
 ';
+echo '<br>' . '<b>Adiciona os termos na taxonomia</b>'. '<br>';
 execute_query($add_new_taxonomies, $conn, $debug);
 
 // Associa o conteúdo com os termos
@@ -42,6 +46,7 @@ SELECT node.nid, wp_db_casn.wp_terms.term_id
 FROM drupal.node
 INNER JOIN wp_db_casn.wp_terms ON wp_db_casn.wp_terms.slug = node.type;
 ';
+echo '<br>' . '<b>Associa o contéudo com os termos</b>'. '<br>';
 execute_query($associate_term_relationships, $conn, $debug);
 
 // Atualiza o contador das tags
@@ -51,6 +56,7 @@ SET count = (SELECT COUNT(tr.object_id)
 FROM wp_db_nied.wp_db_term_relationships tr
 WHERE tr.term_taxonomy_id = tt.term_taxonomy_id);
 ';
+echo '<br>' . '<b>Atualiza o contador das tags</b>'. '<br>';
 execute_query($update_tags_counter, $conn, $debug);
 
 ?>

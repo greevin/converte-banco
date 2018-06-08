@@ -3,7 +3,7 @@
 $select_query = 'SELECT field_data_field_equ_proj.entity_id, node.nid, node.title 
 FROM node
 LEFT JOIN field_data_field_equ_proj ON node.nid = field_data_field_equ_proj.field_equ_proj_nid
-WHERE type="projeto"';
+WHERE type="projeto" AND field_data_field_equ_proj.entity_id IS NOT NULL';
 $conn->select_db("drupal");
 $result = $conn->query($select_query);
 
@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
 		$map_id_roles_array[$row["entity_id"]][] = $row["nid"];
 	}
 }
-
+echo "<b>Insere os projetos na equipe</b>" . '<br>';
 foreach ($map_id_roles_array as $id => $roles_array) {
 	$array_content = 'a:' . count($roles_array) . ':{';
 	foreach ($roles_array as $key => $role) {

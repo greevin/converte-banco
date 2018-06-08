@@ -4,7 +4,7 @@ $select_query = 'SELECT node.nid, node.title, field_data_field_linhasp.field_lin
 FROM node
 LEFT JOIN field_data_field_data_fim ON node.nid = field_data_field_data_fim.entity_id
 LEFT JOIN field_data_field_linhasp ON node.nid = field_data_field_linhasp.entity_id
-WHERE type="equipe"';
+WHERE type="equipe" AND field_data_field_linhasp.field_linhasp_value IS NOT NULL';
 $conn->select_db("drupal");
 $result = $conn->query($select_query);
 
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
 		$map_id_roles_array[$row["nid"]][] = $row["linha_pesquisa"];
 	}
 }
-
+echo "<b>Insere as linhas de pesquisa na equipe</b>" . '<br>';
 foreach ($map_id_roles_array as $id => $roles_array) {
 	$array_content = 'a:' . count($roles_array) . ':{';
 	foreach ($roles_array as $key => $role) {
