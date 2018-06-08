@@ -45,4 +45,7 @@ require_once "migra-arquivos.php";
 echo '<br>'. "<b>&gt;&gt;remove-acentuacao.php</b>" . '<br>';
 require_once "remove-acentuacao.php";
 
+echo '<br>'. "<b>&gt;&gt;migra-eventos.php</b>" . '<br>';
+require_once "migra-eventos.php";
+
 $conn->close();
