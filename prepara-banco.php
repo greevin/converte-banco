@@ -1,17 +1,25 @@
 <?php
 
-//// Limpa as tabelas do Wordpress
-//$clean_tables_query = '
-//TRUNCATE TABLE wp_db_nied.wp_db_comments;
-//TRUNCATE TABLE wp_db_nied.wp_db_links;
-//TRUNCATE TABLE wp_db_nied.wp_db_postmeta;
-//TRUNCATE TABLE wp_db_nied.wp_db_posts;
-//TRUNCATE TABLE wp_db_nied.wp_db_term_relationships;
-//TRUNCATE TABLE wp_db_nied.wp_db_term_taxonomy;
-//TRUNCATE TABLE wp_db_nied.wp_db_terms;
-//';
-//echo '<b>Limpando as tabelas do Wordpress</b>'. '<br>';
-//execute_query($clean_tables_query, $conn, $debug);
+// Limpa as tabelas do Wordpress
+$sql = "
+SELECT * FROM INFORMATION_SCHEMA.TABLES 
+WHERE TABLE_SCHEMA LIKE 'wp_db_nied' 
+AND TABLE_NAME IN ('wp_db_comments', 'wp_db_links', 'wp_db_postmeta', 'wp_db_posts', 'wp_db_term_relationships', 'wp_db_term_taxonomy', 'wp_db_terms');
+";
+$result = $conn->query($sql);
+$tables = $result->fetch_all(MYSQLI_ASSOC);
+
+foreach($tables as $table) {
+    $sql = 'TRUNCATE TABLE wp_db_nied.'.$table['TABLE_NAME'];
+    print_r('Apagando tabela do Wordpress: '.$table['TABLE_NAME'].'<br>');
+    $result = $conn->query($sql);
+    if ($result == 1) {
+        print_r('&gt;&gt;Sucesso ao apagar a tabela '. $table['TABLE_NAME'] .'<br><br>');
+    } else {
+        print_r('&gt;&gt;Falha ao apagar a tabela' . '<br>');
+    }
+
+}
 
 // Cria o ’Sem Categoria’ se ele foi apagado
 $create_no_category = '
