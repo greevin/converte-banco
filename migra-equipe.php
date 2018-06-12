@@ -32,7 +32,7 @@ execute_query($migrate_start_date_info_team, $conn, $debug);
 
 // Data de Fim
 $migrate_end_date_info_team = '
-INSERT INTO wp_db_nied.wp_db_postmeta (post_id, meta_key, meta_value);
+INSERT INTO wp_db_nied.wp_db_postmeta (post_id, meta_key, meta_value)
 SELECT drupal.node.nid, "data_de_fim", SUBSTRING(REPLACE(drupal.field_data_field_data_fim.field_data_fim_value, "-",""), 1, 8) as data_de_fim FROM drupal.node
 LEFT JOIN drupal.field_data_field_data_fim on drupal.node.nid = drupal.field_data_field_data_fim.entity_id
 WHERE type="equipe" AND drupal.field_data_field_data_fim.field_data_fim_value IS NOT NULL;
