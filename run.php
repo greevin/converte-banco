@@ -14,7 +14,7 @@ function execute_query($query, $conn, $debug) {
         if ($conn->query($query) === TRUE) {
             echo 'Sucesso: '.$query."<br>";
         } else {
-            echo 'Falha: '.$query."<br>".$conn->error;
+            echo 'Falha: '.$query."<br>". "<br><b>Motivo:</b> ". $conn->error."<br>";
         }
     }
 }
@@ -46,5 +46,7 @@ require_once "migra-equipe.php";
 echo '<br>'. "<b>&gt;&gt;migra-eventos.php</b>" . '<br>';
 require_once "migra-eventos.php";
 
+echo '<br>'. "<b>&gt;&gt;migra-projetos.php</b>" . '<br>';
+require_once "migra-projetos.php";
 
 $conn->close();
