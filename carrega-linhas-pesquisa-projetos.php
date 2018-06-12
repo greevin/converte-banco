@@ -68,4 +68,70 @@ foreach ($map_id_roles_array as $id => $roles_array) {
     execute_query($insere_equipe_query, $conn, $debug);
 }
 
+$select_others_colaborators_query = '
+SELECT drupal.node.nid, drupal.node.title, drupal.field_data_field_outros_colaboradores.entity_id, drupal.field_data_field_outros_colaboradores.field_outros_colaboradores_value 
+FROM drupal.node
+LEFT JOIN drupal.field_data_field_outros_colaboradores ON node.nid = drupal.field_data_field_outros_colaboradores.entity_id
+WHERE type="projeto" AND field_outros_colaboradores_value IS NOT NULL
+';
+$conn->select_db("drupal");
+$result = $conn->query($select_others_colaborators_query);
+
+$map_id_roles_array = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        if(!array_key_exists($row["nid"], $map_id_roles_array)) {
+            $map_id_roles_array[$row["nid"]] = [];
+        }
+        $map_id_roles_array[$row["nid"]][] = $row["field_outros_colaboradores_value"];
+    }
+}
+
+foreach ($map_id_roles_array as $id => $roles_array) {
+    $array_content = 'a:' . count($roles_array) . ':{';
+    foreach ($roles_array as $key => $role) {
+        $array_content .= 'i:' . $key . ';s:' . strlen($role) . ':"' . $role  . '";';
+    }
+    $array_content .= '}';
+
+    $insere_outros_colaboradores_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
+                           .' VALUES ('.$id.','.'"outros_colaboradores"'.",'".$array_content."');";
+    $conn->select_db("wp_db_nied");
+
+    execute_query($insere_outros_colaboradores_query, $conn, $debug);
+}
+
+$select_partners_query = '
+SELECT drupal.node.nid, drupal.node.title, drupal.field_data_field_rel_parcerias.field_rel_parcerias_nid 
+FROM drupal.node
+LEFT JOIN drupal.field_data_field_rel_parcerias ON node.nid = drupal.field_data_field_rel_parcerias.entity_id
+WHERE type="projeto" AND field_rel_parcerias_nid IS NOT NULL
+';
+$conn->select_db("drupal");
+$result = $conn->query($select_partners_query);
+
+$map_id_roles_array = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        if(!array_key_exists($row["nid"], $map_id_roles_array)) {
+            $map_id_roles_array[$row["nid"]] = [];
+        }
+        $map_id_roles_array[$row["nid"]][] = $row["field_rel_parcerias_nid"];
+    }
+}
+
+foreach ($map_id_roles_array as $id => $roles_array) {
+    $array_content = 'a:' . count($roles_array) . ':{';
+    foreach ($roles_array as $key => $role) {
+        $array_content .= 'i:' . $key . ';s:' . strlen($role) . ':"' . $role  . '";';
+    }
+    $array_content .= '}';
+
+    $insere_parceiros_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
+                                         .' VALUES ('.$id.','.'"parceiros"'.",'".$array_content."');";
+    $conn->select_db("wp_db_nied");
+
+    execute_query($insere_parceiros_query, $conn, $debug);
+}
+
 ?>
