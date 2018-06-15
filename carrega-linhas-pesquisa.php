@@ -5,7 +5,7 @@ FROM node
 LEFT JOIN field_data_field_data_fim ON node.nid = field_data_field_data_fim.entity_id
 LEFT JOIN field_data_field_linhasp ON node.nid = field_data_field_linhasp.entity_id
 WHERE type="equipe" AND field_data_field_linhasp.field_linhasp_value IS NOT NULL';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_query);
 
 $map_id_roles_array = [];
@@ -27,7 +27,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
 	$insere_linha_pesquisa_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
                                    .' VALUES ('.$id.','.'"linha_de_pesquisa"'.",'".$array_content."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_linha_pesquisa_query, $conn, $debug);
 }

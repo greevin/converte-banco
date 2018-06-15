@@ -5,7 +5,7 @@ FROM node
 LEFT JOIN field_data_field_funcao ON node.nid = field_data_field_funcao.entity_id
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid = field_data_field_funcao.field_funcao_tid
 WHERE type="equipe" AND field_data_field_funcao.field_funcao_tid IS NOT NULL';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_query);
 
 $map_id_roles_array = [];
@@ -27,7 +27,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
 	$insere_cargo_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
 											. ' VALUES (' . $id . ',' . '"cargo"'. ",'". $array_content ."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_cargo_query, $conn, $debug);
 }

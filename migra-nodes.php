@@ -2,7 +2,7 @@
 
 // Migra os nodes para os posts
 $migrate_nodes_to_posts = '
-REPLACE INTO wp_db_nied.wp_db_posts (
+REPLACE INTO '.$migrate_to_db.'.wp_db_posts (
 ID,
 post_author,
 post_date,
@@ -62,7 +62,7 @@ execute_query($migrate_nodes_to_posts, $conn, $debug);
 
 // Altera o tipo do post
 $change_post_type = '
-UPDATE wp_db_nied.wp_db_posts SET post_type = "post"
+UPDATE '.$migrate_to_db.'.wp_db_posts SET post_type = "post"
 WHERE post_type IN (
 "arquivo",
 "not_cia",

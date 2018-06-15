@@ -7,7 +7,7 @@ field_pesquisa_value AS linha_pesquisa
 FROM drupal.node
 LEFT JOIN drupal.field_data_field_pesquisa ON drupal.node.nid = drupal.field_data_field_pesquisa.entity_id
 WHERE type="projeto" and field_pesquisa_value IS NOT NULL';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_research_line_query);
 
 $map_id_roles_array = [];
@@ -29,7 +29,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
 	$insere_linha_pesquisa_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
                                    .' VALUES ('.$id.','.'"linha_de_pesquisa"'.",'".$array_content."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_linha_pesquisa_query, $conn, $debug);
 }
@@ -41,7 +41,7 @@ LEFT JOIN field_data_field_equipe ON node.nid = field_data_field_equipe.entity_i
 LEFT JOIN node_revision ON node_revision.nid = field_data_field_equipe.field_equipe_nid
 WHERE type="projeto" AND node_revision.title IS NOT NULL
 ';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_team_query);
 
 $map_id_roles_array = [];
@@ -63,7 +63,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
     $insere_equipe_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
                                    .' VALUES ('.$id.','.'"equipe"'.",'".$array_content."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_equipe_query, $conn, $debug);
 }
@@ -74,7 +74,7 @@ FROM drupal.node
 LEFT JOIN drupal.field_data_field_outros_colaboradores ON node.nid = drupal.field_data_field_outros_colaboradores.entity_id
 WHERE type="projeto" AND field_outros_colaboradores_value IS NOT NULL
 ';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_others_colaborators_query);
 
 $map_id_roles_array = [];
@@ -96,7 +96,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
     $insere_outros_colaboradores_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
                            .' VALUES ('.$id.','.'"outros_colaboradores"'.",'".$array_content."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_outros_colaboradores_query, $conn, $debug);
 }
@@ -107,7 +107,7 @@ FROM drupal.node
 LEFT JOIN drupal.field_data_field_rel_parcerias ON node.nid = drupal.field_data_field_rel_parcerias.entity_id
 WHERE type="projeto" AND field_rel_parcerias_nid IS NOT NULL
 ';
-$conn->select_db("drupal");
+$conn->select_db($migrate_from_db);
 $result = $conn->query($select_partners_query);
 
 $map_id_roles_array = [];
@@ -129,7 +129,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
 
     $insere_parceiros_query = 'INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)'
                                          .' VALUES ('.$id.','.'"parceiros"'.",'".$array_content."');";
-    $conn->select_db("wp_db_nied");
+    $conn->select_db($migrate_to_db);
 
     execute_query($insere_parceiros_query, $conn, $debug);
 }
