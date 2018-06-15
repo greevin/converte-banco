@@ -1,13 +1,14 @@
 <?php
 
-// Altera a categoria para publicacoes
-$change_publication_category = '
-UPDATE '.$migrate_to_db.'.wp_db_posts SET post_type = "publicacoes"
+// Altera o tipo do post
+$change_type_to_biblioteca = '
+UPDATE '.$migrate_to_db.'.wp_db_posts SET post_type = "biblioteca"
 WHERE post_type IN (
-"publica_o")
+"publica_o",
+"programa");
 ';
-echo '<b>Altera a categoria das publicações</b>'. '<br>';
-execute_query($change_publication_category, $conn, $debug);
+echo '<br>' . '<b>Alterando publicação e projeto para o tipo "Biblioteca"</b>'. '<br>';
+execute_query($change_type_to_biblioteca, $conn, $debug);
 
 // Resumo
 $add_publication_excerpt = '

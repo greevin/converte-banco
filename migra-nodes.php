@@ -34,10 +34,10 @@ IF(n.status = 1, "publish", "private") "post_status",
 " ",
 " ",
 " "
-FROM drupal.node n
-INNER JOIN drupal.node_revision r USING(vid)
-LEFT OUTER JOIN drupal.field_data_body f ON r.vid = f.revision_id
-LEFT OUTER JOIN drupal.url_alias a
+FROM '.$migrate_from_db.'.node n
+INNER JOIN '.$migrate_from_db.'.node_revision r USING(vid)
+LEFT OUTER JOIN '.$migrate_from_db.'.field_data_body f ON r.vid = f.revision_id
+LEFT OUTER JOIN '.$migrate_from_db.'.url_alias a
 ON a.source = CONCAT("node/", n.nid)
 WHERE n.type IN (
 /* List the content types you want to migrate */
@@ -61,14 +61,14 @@ echo '<b>Migrando nodes para posts</b>'. '<br>';
 execute_query($migrate_nodes_to_posts, $conn, $debug);
 
 // Altera o tipo do post
-$change_post_type = '
+$change_type_to_post = '
 UPDATE '.$migrate_to_db.'.wp_db_posts SET post_type = "post"
 WHERE post_type IN (
 "arquivo",
 "not_cia",
 "evento");
 ';
-echo '<br>' . '<b>Alterando os tipos dos posts</b>'. '<br>';
-execute_query($change_post_type, $conn, $debug);
+echo '<br>' . '<b>Alterando arquivo, noticia e evento para o tipo "Post"</b>'. '<br>';
+execute_query($change_type_to_post, $conn, $debug);
 
 ?>

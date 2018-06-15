@@ -1,11 +1,12 @@
 <?php
 
+//Linha de Pesquisa para Projetos
 $select_research_line_query = 'SELECT 
-drupal.node.nid, 
-drupal.node.title,
+'.$migrate_from_db.'.node.nid, 
+'.$migrate_from_db.'.node.title,
 field_pesquisa_value AS linha_pesquisa
-FROM drupal.node
-LEFT JOIN drupal.field_data_field_pesquisa ON drupal.node.nid = drupal.field_data_field_pesquisa.entity_id
+FROM '.$migrate_from_db.'.node
+LEFT JOIN '.$migrate_from_db.'.field_data_field_pesquisa ON '.$migrate_from_db.'.node.nid = '.$migrate_from_db.'.field_data_field_pesquisa.entity_id
 WHERE type="projeto" and field_pesquisa_value IS NOT NULL';
 $conn->select_db($migrate_from_db);
 $result = $conn->query($select_research_line_query);
@@ -34,6 +35,7 @@ foreach ($map_id_roles_array as $id => $roles_array) {
     execute_query($insere_linha_pesquisa_query, $conn, $debug);
 }
 
+// Equipe
 $select_team_query = '
 SELECT node.nid, node.title, node_revision.nid AS equipe
 FROM node
@@ -68,10 +70,11 @@ foreach ($map_id_roles_array as $id => $roles_array) {
     execute_query($insere_equipe_query, $conn, $debug);
 }
 
+//Outros Colaboradores
 $select_others_colaborators_query = '
-SELECT drupal.node.nid, drupal.node.title, drupal.field_data_field_outros_colaboradores.entity_id, drupal.field_data_field_outros_colaboradores.field_outros_colaboradores_value 
-FROM drupal.node
-LEFT JOIN drupal.field_data_field_outros_colaboradores ON node.nid = drupal.field_data_field_outros_colaboradores.entity_id
+SELECT '.$migrate_from_db.'.node.nid, '.$migrate_from_db.'.node.title, '.$migrate_from_db.'.field_data_field_outros_colaboradores.entity_id, '.$migrate_from_db.'.field_data_field_outros_colaboradores.field_outros_colaboradores_value 
+FROM '.$migrate_from_db.'.node
+LEFT JOIN '.$migrate_from_db.'.field_data_field_outros_colaboradores ON node.nid = '.$migrate_from_db.'.field_data_field_outros_colaboradores.entity_id
 WHERE type="projeto" AND field_outros_colaboradores_value IS NOT NULL
 ';
 $conn->select_db($migrate_from_db);
@@ -101,10 +104,11 @@ foreach ($map_id_roles_array as $id => $roles_array) {
     execute_query($insere_outros_colaboradores_query, $conn, $debug);
 }
 
+//Parceiros
 $select_partners_query = '
-SELECT drupal.node.nid, drupal.node.title, drupal.field_data_field_rel_parcerias.field_rel_parcerias_nid 
-FROM drupal.node
-LEFT JOIN drupal.field_data_field_rel_parcerias ON node.nid = drupal.field_data_field_rel_parcerias.entity_id
+SELECT '.$migrate_from_db.'.node.nid, '.$migrate_from_db.'.node.title, '.$migrate_from_db.'.field_data_field_rel_parcerias.field_rel_parcerias_nid 
+FROM '.$migrate_from_db.'.node
+LEFT JOIN '.$migrate_from_db.'.field_data_field_rel_parcerias ON node.nid = '.$migrate_from_db.'.field_data_field_rel_parcerias.entity_id
 WHERE type="projeto" AND field_rel_parcerias_nid IS NOT NULL
 ';
 $conn->select_db($migrate_from_db);
