@@ -4,7 +4,7 @@
 $sql = "
 SELECT * FROM INFORMATION_SCHEMA.TABLES 
 WHERE TABLE_SCHEMA LIKE '".$migrate_to_db."' 
-AND TABLE_NAME IN ('wp_db_comments', 'wp_db_links', 'wp_db_postmeta', 'wp_db_posts', 'wp_db_term_relationships', 'wp_db_term_taxonomy', 'wp_db_terms');
+AND TABLE_NAME IN ('wp_db_comments', 'wp_db_links', 'wp_db_postmeta', 'wp_db_posts', 'wp_db_term_relationships', 'wp_db_term_taxonomy', 'wp_db_terms', 'wp_db_users');
 ";
 $result = $conn->query($sql);
 $tables = $result->fetch_all(MYSQLI_ASSOC);

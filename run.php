@@ -56,4 +56,7 @@ require_once "migra-eventos.php";
 echo '<br>'. "<b>&gt;&gt;migra-projetos.php</b><hr>";
 require_once "migra-projetos.php";
 
+echo '<br>'. "<b>&gt;&gt;migra-usuarios.php</b><hr>";
+require_once "migra-usuarios.php";
+
 $conn->close();
