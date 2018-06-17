@@ -62,4 +62,7 @@ require_once "migra-usuarios.php";
 echo '<br>'. "<b>&gt;&gt;migra-parceria.php</b><hr>";
 require_once "migra-parceria.php";
 
+echo '<br>'. "<b>&gt;&gt;cria-configuracao-rodape.php</b><hr>";
+require_once "cria-configuracao-rodape.php";
+
 $conn->close();
