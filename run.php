@@ -71,4 +71,7 @@ require_once "cria-configuracao-revista.php";
 echo '<br>'. "<b>&gt;&gt;cria-configuracao-rodape.php</b><hr>";
 require_once "cria-configuracao-rodape.php";
 
+echo '<br>'. "<b>&gt;&gt;cria-configuracao-nied.php</b><hr>";
+require_once "cria-configuracao-nied.php";
+
 $conn->close();
