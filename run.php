@@ -65,6 +65,9 @@ require_once "migra-parceria.php";
 echo '<br>'. "<b>&gt;&gt;cria-configuracao-jumbotron.php</b><hr>";
 require_once "cria-configuracao-jumbotron.php";
 
+echo '<br>'. "<b>&gt;&gt;cria-configuracao-revista.php</b><hr>";
+require_once "cria-configuracao-revista.php";
+
 echo '<br>'. "<b>&gt;&gt;cria-configuracao-rodape.php</b><hr>";
 require_once "cria-configuracao-rodape.php";
 
