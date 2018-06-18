@@ -54,3 +54,11 @@ execute_query($migrate_more_info_project, $conn, $debug);
 // Linha de Pesquisa
 echo '<br>' . '<b>Adiciona a linha de pesquisa para um projeto</b>'. '<br>';
 require_once "carrega-linhas-pesquisa-projetos.php";
+
+//Adiciona template da página de Projetos
+$nied_page_template = '
+INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
+VALUES (12, "_wp_page_template", "page-pesquisa.php");
+';
+echo '<br><b>Adiciona o arquivo de template do Projeto</b>'. '<br>';
+execute_query($nied_page_template, $conn, $debug);
