@@ -50,6 +50,7 @@ WHERE type="programa";
 echo '<br>'. '<b>Adiciona o ano de publicação do programa</b>'. '<br>';
 execute_query($add_software_year_publication, $conn, $debug);
 
+// Altera a slug da categoria Livro de publicacao para livro
 $change_category_slug = '
 UPDATE wp_db_terms
 SET slug = "livro"
@@ -58,6 +59,7 @@ WHERE term_id = 12;
 echo '<br>'. '<b>Altera a slug da categoria Livro de publicacao para livro</b>'. '<br>';
 execute_query($change_category_slug, $conn, $debug);
 
+// Altera o nome da categoria Software para Programa
 $change_category_name = '
 UPDATE wp_db_terms
 SET name = "Programa"
@@ -65,3 +67,19 @@ WHERE term_id = 10;
 ';
 echo '<br>'. '<b>Altera o nome da categoria Software para Programa</b>'. '<br>';
 execute_query($change_category_name, $conn, $debug);
+
+// Altera o post_name da Biblioteca Digital de publicacao para biblioteca-digital
+$change_digital_library_post_name = '
+UPDATE wp_db_posts
+SET post_name = "biblioteca-digital"
+WHERE ID = 26;
+';
+echo '<br>'. '<b>Altera o post_name da Biblioteca Digital de publicacao para biblioteca-digital</b>'. '<br>';
+execute_query($change_digital_library_post_name, $conn, $debug);
+
+$change_digital_library_template = '
+INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
+VALUES (26, "_wp_page_template", "page-biblioteca.php");
+';
+echo '<br>'. '<b>Altera o template padrão para page-biblioteca.php</b>'. '<br>';
+execute_query($change_digital_library_template, $conn, $debug);

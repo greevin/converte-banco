@@ -48,3 +48,11 @@ require_once "carrega-cargos.php";
 
 echo '<br>' . '<b>Adiciona os projetos da pessoa</b>'. '<br>';
 require_once "carrega-projetos.php";
+
+$change_team_template = '
+INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
+VALUES (177, "_wp_page_template", "page-equipe.php");
+
+';
+echo '<br>'. '<b>Altera o template padrão para page-equipe.php</b>'. '<br>';
+execute_query($change_team_template, $conn, $debug);
