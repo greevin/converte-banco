@@ -26,7 +26,26 @@ SELECT '.$migrate_from_db.'.node.nid, "autores", '.$migrate_from_db.'.field_data
 FROM '.$migrate_from_db.'.node
 LEFT JOIN '.$migrate_from_db.'.field_data_field_autores ON '.$migrate_from_db.'.node.nid = '.$migrate_from_db.'.field_data_field_autores.entity_id
 WHERE type="publica_o" and field_data_field_autores.field_autores_value IS NOT NULL;
-
 ';
 echo '<br>'. '<b>Adiciona os autores da publicação</b>'. '<br>';
 execute_query($add_authors_publication, $conn, $debug);
+
+// Adiciona o ano de publicação
+$add_book_year_publication = '
+INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
+SELECT '.$migrate_from_db.'.node.nid, "ano_publicacao", SUBSTRING(field_ano_value, 1, 4) as ano_publicacao FROM '.$migrate_from_db.'.node
+LEFT JOIN '.$migrate_from_db.'.field_data_field_ano on '.$migrate_from_db.'.node.nid = '.$migrate_from_db.'.field_data_field_ano.entity_id
+WHERE type="publica_o";
+';
+echo '<br>'. '<b>Adiciona o ano de publicação</b>'. '<br>';
+execute_query($add_book_year_publication, $conn, $debug);
+
+// Adiciona o ano de publicação do programa
+$add_software_year_publication = '
+INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
+SELECT '.$migrate_from_db.'.node.nid, "ano_programa", SUBSTRING(field_ano_software_value, 1, 4) as ano FROM '.$migrate_from_db.'.node
+LEFT JOIN '.$migrate_from_db.'.field_data_field_ano_software on '.$migrate_from_db.'.node.nid = '.$migrate_from_db.'.field_data_field_ano_software.entity_id
+WHERE type="programa";
+';
+echo '<br>'. '<b>Adiciona o ano de publicação do programa</b>'. '<br>';
+execute_query($add_software_year_publication, $conn, $debug);

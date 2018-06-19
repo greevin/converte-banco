@@ -47,8 +47,8 @@ require_once "migra-arquivos.php";
 echo '<br>'. "<b>&gt;&gt;migra-equipe.php</b><hr>";
 require_once "migra-equipe.php";
 
-echo '<br>'. "<b>&gt;&gt;migra-publicacoes.php</b><hr>";
-require_once "migra-publicacoes.php";
+echo '<br>'. "<b>&gt;&gt;migra-biblioteca.php</b><hr>";
+require_once "migra-biblioteca.php";
 
 echo '<br>'. "<b>&gt;&gt;migra-eventos.php</b><hr>";
 require_once "migra-eventos.php";
