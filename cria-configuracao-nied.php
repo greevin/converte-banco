@@ -69,8 +69,8 @@ echo '<br><b>Adiciona o texto da Missão</b>'. '<br>';
 execute_query($nied_mission_text, $conn, $debug);
 
 $nied_goal_text = '
-INSERT INTO wp_db_postmeta (meta_id, post_id, meta_key, meta_value)
-VALUES (803, 629, "nied_objetivo", "Resumidamente, o <strong>objetivo</strong> do trabalho de pesquisa realizado pelo NIED envolve duas vertentes relacionadas entre si:\r\n<ol>\r\n 	<li>Investigação sobre o papel das Tecnologias de Informação e Comunicação no processo de construção do conhecimento em contextos de ensino–aprendizagem (educação regular, especial/inclusiva, não formal, corporativa e continuada);</li>\r\n 	<li>Desenvolvimento de software e hardware utilizados nesses contextos com base em metodologias projetadas para cada um deles.</li>\r\n</ol>");
+INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
+VALUES (629, "nied_objetivo", "Resumidamente, o <strong>objetivo</strong> do trabalho de pesquisa realizado pelo NIED envolve duas vertentes relacionadas entre si:\r\n<ol>\r\n 	<li>Investigação sobre o papel das Tecnologias de Informação e Comunicação no processo de construção do conhecimento em contextos de ensino–aprendizagem (educação regular, especial/inclusiva, não formal, corporativa e continuada);</li>\r\n 	<li>Desenvolvimento de software e hardware utilizados nesses contextos com base em metodologias projetadas para cada um deles.</li>\r\n</ol>");
 ';
 echo '<br><b>Adiciona o texto do Objetivo</b>'. '<br>';
 execute_query($nied_goal_text, $conn, $debug);
