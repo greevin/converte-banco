@@ -49,3 +49,19 @@ WHERE type="programa";
 ';
 echo '<br>'. '<b>Adiciona o ano de publicação do programa</b>'. '<br>';
 execute_query($add_software_year_publication, $conn, $debug);
+
+$change_category_slug = '
+UPDATE wp_db_terms
+SET slug = "livro"
+WHERE term_id = 12;
+';
+echo '<br>'. '<b>Altera a slug da categoria Livro de publicacao para livro</b>'. '<br>';
+execute_query($change_category_slug, $conn, $debug);
+
+$change_category_name = '
+UPDATE wp_db_terms
+SET name = "Programa"
+WHERE term_id = 10;
+';
+echo '<br>'. '<b>Altera o nome da categoria Software para Programa</b>'. '<br>';
+execute_query($change_category_name, $conn, $debug);
