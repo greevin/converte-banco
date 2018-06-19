@@ -1,6 +1,6 @@
 <?php
 
-$select_query = 'SELECT node.nid, node.title, REPLACE(REPLACE(field_data_field_linhasp.field_linhasp_value, "Eduação", "Educação"), "educação", "Educação") AS linha_pesquisa
+$select_query = 'SELECT node.nid, node.title, REPLACE(REPLACE(REPLACE(field_data_field_linhasp.field_linhasp_value, "Eduação", "Educação"), "educação", "Educação"), "eduação", "Educação") AS linha_pesquisa
 FROM node
 LEFT JOIN field_data_field_data_fim ON node.nid = field_data_field_data_fim.entity_id
 LEFT JOIN field_data_field_linhasp ON node.nid = field_data_field_linhasp.entity_id
