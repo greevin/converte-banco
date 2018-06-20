@@ -77,4 +77,7 @@ require_once "cria-configuracao-nied.php";
 echo '<br>'. "<b>&gt;&gt;cria-biblioteca.php</b><hr>";
 require_once "cria-biblioteca.php";
 
+echo '<br>'. "<b>&gt;&gt;cria-pagina-noticias.php</b><hr>";
+require_once "cria-pagina-noticias.php";
+
 $conn->close();
