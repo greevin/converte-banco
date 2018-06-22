@@ -58,6 +58,14 @@ VALUES (782, "icone", "list-1.svg");
 echo '<br><b>Adiciona o ícone no Memo</b>'. '<br>';
 execute_query($add_icon_to_memo, $conn, $debug);
 
+$update_memo_page = '
+UPDATE wp_db_posts
+SET post_content=\'Para acessar os memos, <a href="http://www.nied.unicamp.br/ojs/index.php/memos">clique aqui</a>.\'
+WHERE ID = 782;
+';
+echo '<br><b>Atualiza o conteúdo da página Memo</b>'. '<br>';
+execute_query($update_memo_page, $conn, $debug);
+
 //Programas
 $create_software_post = '
 INSERT INTO wp_db_posts (ID, post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
