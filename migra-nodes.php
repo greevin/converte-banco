@@ -71,4 +71,21 @@ WHERE post_type IN (
 echo '<br>' . '<b>Alterando arquivo, noticia e evento para o tipo "Post"</b>'. '<br>';
 execute_query($change_type_to_post, $conn, $debug);
 
+// Altera o título da página
+$change_title_page = '
+UPDATE '.$migrate_to_db.'.wp_db_posts
+SET post_title="A Criação do NIED na Unicamp"
+WHERE ID = 304;
+';
+echo '<br>' . '<b>Altera o título da página "A Gênese do NIED" para "A Criação do NIED na Unicamp"</b>'. '<br>';
+execute_query($change_title_page, $conn, $debug);
+
+// Adiciona o autor no campo "Autor"
+$add_author_to_page = '
+INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
+VALUES (304, "autor", "por José Armando Valente");
+';
+echo '<br>' . '<b>Adiciona o autor no campo "Autor"</b>'. '<br>';
+execute_query($add_author_to_page, $conn, $debug);
+
 ?>
