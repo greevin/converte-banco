@@ -110,6 +110,20 @@ VALUES (784, "icone", "play-button-1.svg");
 echo '<br><b>Adiciona o ícone no Audiovisual</b>'. '<br>';
 execute_query($add_icon_to_audiovisual, $conn, $debug);
 
+$create_audiovisual_category = '
+INSERT INTO wp_db_terms (name, slug, term_group)
+VALUES  ("Audiovisual", "audiovisual", 0);
+';
+echo '<br><b>Cria a categoria Audiovisuais</b>'. '<br>';
+execute_query($create_audiovisual_category, $conn, $debug);
+
+$create_audiovisual_term = '
+INSERT INTO wp_db_term_taxonomy (term_taxonomy_id, term_id, taxonomy, description, parent, count)
+VALUES (20, 20, "category", "", 0, 0);
+';
+echo '<br><b>Cria a taxonomia Audiovisual</b>'. '<br>';
+execute_query($create_audiovisual_term, $conn, $debug);
+
 //Livros
 $create_book_post = '
 INSERT INTO wp_db_posts (ID, post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
@@ -144,7 +158,7 @@ $add_magazine_to_term = '
 INSERT INTO wp_db_term_relationships (object_id, term_taxonomy_id, term_order)
 VALUES (786, 19, 0);
 ';
-echo '<br><b>Adiciona o Revista na categoria</b>'. '<br>';
+echo '<br><b>Adiciona o Revista na categoria Biblioteca Digital</b>'. '<br>';
 execute_query($add_magazine_to_term, $conn, $debug);
 
 $add_icon_to_magazine = '
@@ -153,6 +167,20 @@ VALUES (786, "icone", "reading.svg");
 ';
 echo '<br><b>Adiciona o ícone no Revista</b>'. '<br>';
 execute_query($add_icon_to_magazine, $conn, $debug);
+
+$create_magazine_category = '
+INSERT INTO wp_db_terms (name, slug, term_group)
+VALUES  ("Revista", "revista", 0);
+';
+echo '<br><b>Cria a categoria Revista</b>'. '<br>';
+execute_query($create_magazine_category, $conn, $debug);
+
+$create_magazine_term = '
+INSERT INTO wp_db_term_taxonomy (term_taxonomy_id, term_id, taxonomy, description, parent, count)
+VALUES (21, 21, "category", "", 0, 0);
+';
+echo '<br><b>Cria a taxonomia Revista</b>'. '<br>';
+execute_query($create_magazine_term, $conn, $debug);
 
 $update_category = '
 UPDATE wp_db_term_taxonomy tt
