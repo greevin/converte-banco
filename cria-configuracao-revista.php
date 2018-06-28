@@ -26,7 +26,7 @@ post_type,
 post_mime_type, 
 comment_count)
 VALUES (
-595, 
+454, 
 1, 
 "2018-06-06 08:03:36", 
 "2018-06-06 11:03:36", 
@@ -44,7 +44,7 @@ VALUES (
 "2018-06-06 11:05:21", 
 "", 
 0, 
-"'.$url.'?post_type=configuracoes_tema&#038;p=595", 
+"'.$url.'?post_type=configuracoes_tema&#038;p=454", 
 0, 
 "configuracoes_tema", 
 "", 
@@ -56,7 +56,7 @@ execute_query($create_magazine_conf, $conn, $debug);
 
 $magazine_section_title = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (595, "nome_da_secao", "Revista");
+VALUES (454, "nome_da_secao", "Revista");
 
 ';
 echo '<br><b>Adiciona o nome da seção</b>'. '<br>';
@@ -64,7 +64,7 @@ execute_query($magazine_section_title, $conn, $debug);
 
 $magazine_text = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (595, "texto_apresentacao", "<h2>Tecnologias, Sociedade e Conhecimento</h2><div id=\"content\">\n<div>A revista eletrônica <em>Tecnologias, Sociedade e Conhecimento </em>é uma publicação científica do Núcleo de Informática Aplicada à Educação (NIED/UNICAMP) voltada para a divulgação de trabalhos acadêmicos por meio da promoção do acesso livre à informação.\n\nA revista visa a promover o debate — a partir de diferentes perspectivas teóricas e disciplinares e interdisciplinares — do estado atual, avanços e tendências futuras sobre a construção de conhecimentos mediada por tecnologias.\n\n</div>\n</div>");
+VALUES (454, "texto_apresentacao", "<h2>Tecnologias, Sociedade e Conhecimento</h2><div id=\"content\">\n<div>A revista eletrônica <em>Tecnologias, Sociedade e Conhecimento </em>é uma publicação científica do Núcleo de Informática Aplicada à Educação (NIED/UNICAMP) voltada para a divulgação de trabalhos acadêmicos por meio da promoção do acesso livre à informação.\n\nA revista visa a promover o debate — a partir de diferentes perspectivas teóricas e disciplinares e interdisciplinares — do estado atual, avanços e tendências futuras sobre a construção de conhecimentos mediada por tecnologias.\n\n</div>\n</div>");
 
 ';
 echo '<br><b>Adiciona o texto de apresentação da Revista</b>'. '<br>';

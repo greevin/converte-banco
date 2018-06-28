@@ -27,7 +27,7 @@ post_type,
 post_mime_type, 
 comment_count)
 VALUES (
-629, 
+456, 
 1, 
 "2018-06-06 08:19:44", 
 "2018-06-06 11:19:44", 
@@ -45,7 +45,7 @@ VALUES (
 "2018-06-06 11:22:12", 
 "", 
 0, 
-"'.$url.'?page_id=629", 
+"'.$url.'?page_id=456", 
 0, 
 "page", 
 "", 
@@ -56,28 +56,28 @@ execute_query($create_nied_conf, $conn, $debug);
 
 $nied_page_template = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (629, "_wp_page_template", "page-nied.php");
+VALUES (456, "_wp_page_template", "page-nied.php");
 ';
 echo '<br><b>Adiciona o arquivo de template</b>'. '<br>';
 execute_query($nied_page_template, $conn, $debug);
 
 $nied_mission_text = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (629, "nied_missao", "A <strong>missão</strong> do NIED é \"construir e difundir conhecimento sobre as relações entre a educação, a sociedade e a tecnologia por meio de pesquisas e desenvolvimento de tecnologias e metodologias de forma integrada às demandas da sociedade.\"");
+VALUES (456, "nied_missao", "A <strong>missão</strong> do NIED é \"construir e difundir conhecimento sobre as relações entre a educação, a sociedade e a tecnologia por meio de pesquisas e desenvolvimento de tecnologias e metodologias de forma integrada às demandas da sociedade.\"");
 ';
 echo '<br><b>Adiciona o texto da Missão</b>'. '<br>';
 execute_query($nied_mission_text, $conn, $debug);
 
 $nied_goal_text = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (629, "nied_objetivo", "Resumidamente, o <strong>objetivo</strong> do trabalho de pesquisa realizado pelo NIED envolve duas vertentes relacionadas entre si:\r\n<ol>\r\n 	<li>Investigação sobre o papel das Tecnologias de Informação e Comunicação no processo de construção do conhecimento em contextos de ensino–aprendizagem (educação regular, especial/inclusiva, não formal, corporativa e continuada);</li>\r\n 	<li>Desenvolvimento de software e hardware utilizados nesses contextos com base em metodologias projetadas para cada um deles.</li>\r\n</ol>");
+VALUES (456, "nied_objetivo", "Resumidamente, o <strong>objetivo</strong> do trabalho de pesquisa realizado pelo NIED envolve duas vertentes relacionadas entre si:\r\n<ol>\r\n 	<li>Investigação sobre o papel das Tecnologias de Informação e Comunicação no processo de construção do conhecimento em contextos de ensino–aprendizagem (educação regular, especial/inclusiva, não formal, corporativa e continuada);</li>\r\n 	<li>Desenvolvimento de software e hardware utilizados nesses contextos com base em metodologias projetadas para cada um deles.</li>\r\n</ol>");
 ';
 echo '<br><b>Adiciona o texto do Objetivo</b>'. '<br>';
 execute_query($nied_goal_text, $conn, $debug);
 
 $nied_vision_text = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (629, "nied_visao", "A <strong>visão</strong> do NIED para o ano de 2021 é ser \"um ambiente amplo e virtualizado que reúne profissionais de diferentes perfis, cuja atuação tem impacto e reconhecimento nacional e internacional, visando à construção de conhecimentos sobre o uso de tecnologias para uma sociedade mais solidária.\"");
+VALUES (456, "nied_visao", "A <strong>visão</strong> do NIED para o ano de 2021 é ser \"um ambiente amplo e virtualizado que reúne profissionais de diferentes perfis, cuja atuação tem impacto e reconhecimento nacional e internacional, visando à construção de conhecimentos sobre o uso de tecnologias para uma sociedade mais solidária.\"");
 ';
 echo '<br><b>Adiciona o texto da Visão</b>'. '<br>';
 execute_query($nied_vision_text, $conn, $debug);

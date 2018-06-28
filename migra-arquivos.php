@@ -73,7 +73,7 @@ execute_query($add_posts_images, $conn, $debug);
 $add_logo = '
 INSERT INTO '.$migrate_to_db.'.wp_db_posts (ID, post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
 VALUES (
-831, 
+464, 
 2, 
 "2018-06-28 09:41:09", 
 "2018-06-28 12:41:09", 
@@ -102,7 +102,7 @@ execute_query($add_logo, $conn, $debug);
 
 $add_logo_postmeta = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (831, "_wp_attached_file", "2018/06/LOGOTIPO_NIED_2018_FINAL_Alta_semFundo-4.png");
+VALUES (464, "_wp_attached_file", "2018/06/LOGOTIPO_NIED_2018_FINAL_Alta_semFundo-4.png");
 ';
 echo '<br>'. '<b>Adiciona logo na página</b>'. '<br>';
 execute_query($add_logo_postmeta, $conn, $debug);
@@ -111,7 +111,7 @@ execute_query($add_logo_postmeta, $conn, $debug);
 $add_magazine_cover = '
 INSERT INTO '.$migrate_to_db.'.wp_db_posts (ID, post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
 VALUES (
-833, 
+465, 
 2, 
 "2018-06-28 10:35:59", 
 "2018-06-28 13:35:59", 
@@ -140,7 +140,7 @@ execute_query($add_magazine_cover, $conn, $debug);
 
 $add_magazine_cover_postmeta = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (833, "_wp_attached_file", "2018/06/cover_issue_53_pt_BR-2.jpg");
+VALUES (465, "_wp_attached_file", "2018/06/cover_issue_53_pt_BR-2.jpg");
 ';
 echo '<br>'. '<b>Adiciona o postmeta da imagem da edição atual da revista</b>'. '<br>';
 execute_query($add_magazine_cover_postmeta, $conn, $debug);
@@ -148,7 +148,7 @@ execute_query($add_magazine_cover_postmeta, $conn, $debug);
 $add_magazine_cover_to_acf_field = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
 VALUES 
-(595, "imagem_da_edicao_atual", "833"),
+(595, "imagem_da_edicao_atual", "465"),
 (595, "_imagem_da_edicao_atual", "field_5afd86af23125");
 ';
 echo '<br>'. '<b>Adiciona a imagem da revista no campo do ACF</b>'. '<br>';
@@ -158,7 +158,7 @@ execute_query($add_magazine_cover_to_acf_field, $conn, $debug);
 $add_license_image = '
 INSERT INTO '.$migrate_to_db.'.wp_db_posts (ID, post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
 VALUES (
-835, 
+466, 
 2, 
 "2018-06-28 10:45:43", 
 "2018-06-28 13:45:43", 
@@ -187,7 +187,7 @@ execute_query($add_license_image, $conn, $debug);
 
 $add_license_postmeta = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (835, "_wp_attached_file", "2018/06/88x31-1.png");
+VALUES (466, "_wp_attached_file", "2018/06/88x31-1.png");
 ';
 echo '<br>'. '<b>Adiciona a postmeta da imagem da licença</b>'. '<br>';
 execute_query($add_license_postmeta, $conn, $debug);
@@ -195,7 +195,7 @@ execute_query($add_license_postmeta, $conn, $debug);
 $add_license_image_to_acf_field = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
 VALUES 
-(597, "rodape_imagem", "835"), 
+(597, "rodape_imagem", "466"), 
 (597, "_rodape_imagem", "field_5af03710f955e");
 ';
 echo '<br>'. '<b>Adiciona a imagem da licença no campo do ACF</b>'. '<br>';
