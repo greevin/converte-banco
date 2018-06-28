@@ -5,7 +5,7 @@ $migrate_lattes_info_team = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
 SELECT '.$migrate_from_db.'.node.nid, "curriculo_lattes", '.$migrate_from_db.'.field_data_field_lattes.field_lattes_url FROM '.$migrate_from_db.'.node
 LEFT JOIN '.$migrate_from_db.'.field_data_field_lattes on '.$migrate_from_db.'.node.nid = '.$migrate_from_db.'.field_data_field_lattes.entity_id
-WHERE type="equipe";
+WHERE type="equipe" AND '.$migrate_from_db.'.field_data_field_lattes.field_lattes_url IS NOT NULL;
 ';
 echo '<b>Adiciona as informações do currículo Lattes para uma pessoa</b>'. '<br>';
 execute_query($migrate_lattes_info_team, $conn, $debug);
