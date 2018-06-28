@@ -64,7 +64,7 @@ execute_query($magazine_section_title, $conn, $debug);
 
 $magazine_text = '
 INSERT INTO wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (595, "texto_apresentacao", "<h2>Tecnologias, Sociedade e Conhecimento</h2>\r\n<div id=\"content\">\r\n<div>\r\n\r\nA revista eletrônica <em>Tecnologias, Sociedade e Conhecimento </em>é uma publicação científica do Núcleo de Informática Aplicada à Educação (NIED/UNICAMP) voltada para a divulgação de trabalhos acadêmicos por meio da promoção do acesso livre à informação.\r\n\r\nA revista visa a promover o debate -- a partir de diferentes perspectivas teóricas e disciplinares e interdisciplinares -- do estado atual, avanços e tendências futuras sobre a construção de conhecimentos mediada por tecnologias.\r\n\r\n</div>\r\n</div>");
+VALUES (595, "texto_apresentacao", "<h2>Tecnologias, Sociedade e Conhecimento</h2><div id=\"content\">\n<div>A revista eletrônica <em>Tecnologias, Sociedade e Conhecimento </em>é uma publicação científica do Núcleo de Informática Aplicada à Educação (NIED/UNICAMP) voltada para a divulgação de trabalhos acadêmicos por meio da promoção do acesso livre à informação.\n\nA revista visa a promover o debate — a partir de diferentes perspectivas teóricas e disciplinares e interdisciplinares — do estado atual, avanços e tendências futuras sobre a construção de conhecimentos mediada por tecnologias.\n\n</div>\n</div>");
 
 ';
 echo '<br><b>Adiciona o texto de apresentação da Revista</b>'. '<br>';
