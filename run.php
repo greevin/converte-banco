@@ -80,4 +80,7 @@ require_once "cria-biblioteca.php";
 echo '<br>'. "<b>&gt;&gt;cria-pagina-noticias.php</b><hr>";
 require_once "cria-pagina-noticias.php";
 
+echo '<br>'. "<b>&gt;&gt;adiciona-imagens-projetos.php</b><hr>";
+require_once "adiciona-imagens-projetos.php";
+
 $conn->close();
