@@ -128,7 +128,7 @@ VALUES (
 "2018-06-28 10:35:59", 
 "2018-06-28 13:35:59", 
 "", 
-595, 
+454, 
 "'.$url.'wp-content/uploads/2018/06/cover_issue_53_pt_BR-2.jpg", 
 0, 
 "attachment", 
@@ -148,8 +148,8 @@ execute_query($add_magazine_cover_postmeta, $conn, $debug);
 $add_magazine_cover_to_acf_field = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
 VALUES 
-(595, "imagem_da_edicao_atual", "465"),
-(595, "_imagem_da_edicao_atual", "field_5afd86af23125");
+(454, "imagem_da_edicao_atual", "465"),
+(454, "_imagem_da_edicao_atual", "field_5afd86af23125");
 ';
 echo '<br>'. '<b>Adiciona a imagem da revista no campo do ACF</b>'. '<br>';
 execute_query($add_magazine_cover_to_acf_field, $conn, $debug);
@@ -175,7 +175,7 @@ VALUES (
 "2018-06-28 10:45:43", 
 "2018-06-28 13:45:43", 
 "", 
-597, 
+455, 
 "'.$url.'wp-content/uploads/2018/06/88x31-1.png", 
 0, 
 "attachment", 
@@ -195,8 +195,8 @@ execute_query($add_license_postmeta, $conn, $debug);
 $add_license_image_to_acf_field = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
 VALUES 
-(597, "rodape_imagem", "466"), 
-(597, "_rodape_imagem", "field_5af03710f955e");
+(455, "rodape_imagem", "466"), 
+(455, "_rodape_imagem", "field_5af03710f955e");
 ';
 echo '<br>'. '<b>Adiciona a imagem da licença no campo do ACF</b>'. '<br>';
 execute_query($add_license_image_to_acf_field, $conn, $debug);
