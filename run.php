@@ -83,4 +83,7 @@ require_once "cria-pagina-noticias.php";
 echo '<br>'. "<b>&gt;&gt;adiciona-imagens-projetos.php</b><hr>";
 require_once "adiciona-imagens-projetos.php";
 
+echo '<br>'. "<b>&gt;&gt;cria-menu.php</b><hr>";
+require_once "cria-menu.php";
+
 $conn->close();
