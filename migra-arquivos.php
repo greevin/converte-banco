@@ -102,7 +102,7 @@ execute_query($add_logo, $conn, $debug);
 
 $add_logo_postmeta = '
 INSERT INTO '.$migrate_to_db.'.wp_db_postmeta (post_id, meta_key, meta_value)
-VALUES (464, "_wp_attached_file", "2018/06/LOGOTIPO_NIED_2018_FINAL_Alta_semFundo-4.png");
+VALUES (464, "_wp_attached_file", "2018/06/LOGOTIPO_NIED_2018_FINAL_Alta_semFundo.png");
 ';
 echo '<br>'. '<b>Adiciona logo na página</b>'. '<br>';
 execute_query($add_logo_postmeta, $conn, $debug);
