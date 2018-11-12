@@ -2,7 +2,7 @@
 
 //Copia usuários
 $copy_users = '
-INSERT INTO wp_db_users (
+INSERT INTO '.$migrate_to_db.'.wp_db_users (
 ID,
 user_login,
 user_pass,
@@ -29,7 +29,7 @@ echo '<br>' . '<b>Copiando usuários</b>'. '<br>';
 execute_query($copy_users, $conn, $debug);
 
 $change_user_permission = '
-INSERT IGNORE INTO wp_db_usermeta (
+INSERT IGNORE INTO '.$migrate_to_db.'.wp_db_usermeta (
 user_id,
 meta_key,
 meta_value)
@@ -43,7 +43,7 @@ echo '<br>' . '<b>Atribuindo a permissão de Administrador para todos os usuári
 execute_query($change_user_permission, $conn, $debug);
 
 $add_user_level = '
-INSERT IGNORE INTO wp_db_usermeta (
+INSERT IGNORE INTO '.$migrate_to_db.'.wp_db_usermeta (
 user_id,
 meta_key,
 meta_value)
